@@ -1,7 +1,7 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { getLogger } = require('./models');
 
-const logger = getLogger(__name__);
+const logger = getLogger('utils');
 
 function strToBool(val) {
   if (typeof val === 'boolean') return val;

@@ -321,16 +321,16 @@ class SQLiteClient {
   }
 
   // Notes methods
-  async createNote(recipient, message, messageId) {
+  async createNote(recipient, author, message, messageId = null) {
     await this.run(
       'INSERT INTO notes (recipient_id, author, message, message_id) VALUES (?, ?, ?, ?)',
       [
         recipient.id.toString(),
         JSON.stringify({
-          id: message.author.id.toString(),
-          name: message.author.username
+          id: author.id.toString(),
+          name: author.username
         }),
-        message.content,
+        message,
         messageId
       ]
     );

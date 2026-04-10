@@ -47,7 +47,10 @@ class ModmailBot extends Client {
   }
 
   getGuild(guildId) {
-    return this.guilds.cache.get(guildId);
+    if (guildId) {
+      return this.guilds.cache.get(guildId) || this.guilds.cache.first();
+    }
+    return this.guilds.cache.first();
   }
 
   async onReady() {

@@ -2,7 +2,7 @@ const { getLogger } = require('./models');
 const { EmbedBuilder } = require('discord.js');
 const { parseDuration } = require('./time');
 
-const logger = getLogger(__name__);
+const logger = getLogger('thread');
 
 class Thread {
   constructor(manager, recipient, channel = null, otherRecipients = []) {

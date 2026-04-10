@@ -3,7 +3,7 @@ const { getLogger } = require('../core/models');
 const { createNotFoundEmbed } = require('../core/utils');
 const { parseDuration } = require('../core/time');
 
-const logger = getLogger(__name__);
+const logger = getLogger('modmail');
 
 class ModmailCommands {
   constructor(bot) {

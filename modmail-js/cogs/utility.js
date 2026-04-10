@@ -2,7 +2,7 @@ const { EmbedBuilder } = require('discord.js');
 const { getLogger } = require('../core/models');
 const { formatDuration } = require('../core/time');
 
-const logger = getLogger(__name__);
+const logger = getLogger('utility');
 
 class UtilityCommands {
   constructor(bot) {

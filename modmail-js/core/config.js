@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { getLogger } = require('./models');
 
-const logger = getLogger(__name__);
+const logger = getLogger('config');
 
 class ConfigManager {
   constructor(bot) {
