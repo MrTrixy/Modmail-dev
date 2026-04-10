@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { getLogger } = require('../core/models');
+const { getLogger } = require('./models');
 
 const logger = getLogger(__name__);
 

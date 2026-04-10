@@ -1,6 +1,6 @@
 const { getLogger } = require('./models');
 
-const logger = getLogger(__name__);
+const logger = getLogger('time');
 
 class Plural {
   constructor(value) {
@@ -17,7 +17,7 @@ class Plural {
   }
 }
 
-function humanTimedelta(delta, *, accuracy = 3, brief = false, suffix = true) {
+function humanTimedelta(delta, accuracy = 3, brief = false, suffix = true) {
   const units = [
     { name: 'year', seconds: 31536000 },
     { name: 'month', seconds: 2592000 },
@@ -74,7 +74,7 @@ function parseDuration(duration) {
 }
 
 function formatDuration(milliseconds) {
-  const seconds = Math.floor(milliseconds / 1000);
+  let seconds = Math.floor(milliseconds / 1000);
   const units = [
     { name: 'week', seconds: 604800 },
     { name: 'day', seconds: 86400 },

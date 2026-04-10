@@ -2,10 +2,11 @@ const sqlite3 = require('sqlite3').verbose();
 const { promisify } = require('util');
 const { getLogger } = require('./models');
 
-const logger = getLogger(__name__);
+const logger = getLogger('clients');
 
 class SQLiteClient {
-  constructor(dbPath = './modmail.db') {
+  constructor(bot, dbPath = './modmail.db') {
+    this.bot = bot;
     this.dbPath = dbPath;
     this.db = null;
   }
@@ -261,11 +262,40 @@ class SQLiteClient {
   }
 
   async postLog(channelId, data) {
-    // Simplified, just update the log
-    await this.run(
-      'UPDATE logs SET messages = ?, open = 0, closed_at = ? WHERE channel_id = ?',
-      [JSON.stringify(data.messages), new Date().toISOString(), channelId]
-    );
+    const updates = [];
+    const params = [];
+
+    if (data.messages !== undefined) {
+      updates.push('messages = ?');
+      params.push(JSON.stringify(data.messages));
+    }
+
+    if (data.open !== undefined) {
+      updates.push('open = ?');
+      params.push(data.open ? 1 : 0);
+    }
+
+    if (data.closed_at !== undefined) {
+      updates.push('closed_at = ?');
+      params.push(data.closed_at);
+    }
+
+    if (data.snoozed !== undefined) {
+      updates.push('snoozed = ?');
+      params.push(data.snoozed ? 1 : 0);
+    }
+
+    if (data.snooze_data !== undefined) {
+      updates.push('snooze_data = ?');
+      params.push(data.snooze_data ? JSON.stringify(data.snooze_data) : null);
+    }
+
+    if (updates.length === 0) {
+      return data;
+    }
+
+    params.push(channelId);
+    await this.run(`UPDATE logs SET ${updates.join(', ')} WHERE channel_id = ?`, params);
     return data;
   }
 

@@ -8,7 +8,7 @@ const { ModmailCommands } = require('./cogs/modmail');
 const { UtilityCommands } = require('./cogs/utility');
 const { PluginManager } = require('./core/plugins');
 
-const logger = getLogger(__name__);
+const logger = getLogger('index');
 
 class ModmailBot extends Client {
   constructor() {
@@ -25,7 +25,7 @@ class ModmailBot extends Client {
     this.config = new ConfigManager(this);
     this.config.populateCache();
 
-    this.api = new SQLiteClient();
+    this.api = new SQLiteClient(this);
     this.threads = new ThreadManager(this);
     this.modmail = new ModmailCommands(this);
     this.utility = new UtilityCommands(this);
