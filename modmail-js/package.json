@@ -1,0 +1,26 @@
+{
+  "name": "modmail-js",
+  "version": "4.2.1",
+  "description": "A Discord bot for managing modmail threads, ported to JavaScript with SQLite",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "install": "npm install"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "sqlite3": "^5.1.6",
+    "dotenv": "^16.3.1",
+    "node-cron": "^3.0.3",
+    "axios": "^1.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.7"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "author": "",
+  "license": "MIT"
+}
