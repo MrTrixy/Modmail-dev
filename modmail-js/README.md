@@ -26,6 +26,7 @@ A JavaScript port of Modmail bot using Discord.js and SQLite.
 - Thread management with slash commands
 - SQLite database (no MongoDB required)
 - Plugin system
+- Colored console logging with picocolors
 - Basic modmail functionality
 
 ## Commands
