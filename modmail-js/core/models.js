@@ -131,7 +131,7 @@ function configureLogging(bot) {
   // Configure based on bot config if needed
   const logLevel = bot.config.get('log_level') || 'info';
   logger.setLevel(logLevel);
-}
+  
   logger.level = logLevel;
 }
 
